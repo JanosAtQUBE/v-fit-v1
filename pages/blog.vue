@@ -7,8 +7,9 @@
 <script lang="ts" setup>
   const route = useRoute();
   const config = useRuntimeConfig();
+  const wordpressUrl = config.public.wordpressUrl as string;
 
-  const { data, refresh, pending } = await useFetch(config.public.wordpressUrl, {
+  const { data, refresh, pending } = await useFetch(wordpressUrl, {
     method: "get",
     query: {
       query: `

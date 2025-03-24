@@ -29,6 +29,14 @@ export default defineNuxtConfig({
   experimental: { appManifest: false },
   modules: ["@nuxt/content", "nuxt-icon", "@nuxt/image", "@vueuse/nuxt"],
 
+  runtimeConfig: {
+    public: {
+        wordpressUrl: 'https://vfit-nuxt.local/graphql'
+    }
+  },
+
+  pages: true,
+
   app: {
     head: {
       title: 'Nuxt WordPress',
@@ -55,6 +63,10 @@ export default defineNuxtConfig({
         ]
       },
     }
+  },
+
+  imports: {
+    autoImport: true
   },
 
   compatibilityDate: "2024-12-18",
