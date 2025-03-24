@@ -3,11 +3,21 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ["~/assets/css/main.css"],
+  // Enable SCSS preprocessor support
+  css: [
+    '@/assets/scss/main.scss' // global stylesheet
+  ],
   vite: {
     plugins: [
       tailwindcss(),
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/assets/scss/variables.scss" as *;`
+        }
+      }
+    }
   },
   postcss: {
     plugins: {

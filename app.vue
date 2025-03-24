@@ -1,22 +1,38 @@
-<script setup>
-useHead({
-  htmlAttrs: { lang: "en-US" },
-  title: "Nuxt Starter",
-  meta: [
-    {
-      name: "description",
-      content:
-        "Nuxt Starter is a minimal template created for quick landing pages, built with Nuxt and Tailwind CSS.",
-    },
-  ],
-  bodyAttrs: {
-    class: 'font-display'
+<template>
+
+  <PageHeader :nav="nav" :navAltStyle="currentLocation.value" />
+  <NuxtPage />
+
+
+</template>
+
+<script lang="ts" setup>
+const appConfig = useAppConfig()
+const router = useRouter();
+
+const nav = [
+  {
+    label: 'Home',
+    to: '/',
+  },
+  {
+    label: 'About',
+    to: '/about',
+  },
+  {
+    label: 'Contact',
+    to: '/contact',
+  },
+  {
+    label: 'Blog',
+    to: '/blog',
   }
-});
+];
+
+const currentLocation = ref();
+
+currentLocation.value = computed(() => router.currentRoute.value.path === '/');
+
+
 </script>
 
-<template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
-</template>
