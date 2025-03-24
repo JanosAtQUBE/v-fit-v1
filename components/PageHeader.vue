@@ -5,7 +5,7 @@
   >
     <div class="vfit-nav--logo">
       <a href="/">
-        <img src="~/assets/media/logo-color.svg" :class="hideLogo && scrollY === 0 ? 'hidden' : ''" alt="logo" />
+        <img src="@/assets/media/logo-color.svg" :class="hideLogo && scrollY === 0 ? 'hidden' : ''" alt="logo" />
       </a>
     </div>
     <nav>
