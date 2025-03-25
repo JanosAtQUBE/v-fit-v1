@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from "@tailwindcss/vite";
-
 export default defineNuxtConfig({
+  compatibilityDate: "2024-12-18",
   devtools: { enabled: true },
 
   // Enable SCSS preprocessor support
@@ -11,7 +10,7 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [
-      tailwindcss(),
+      //...plugins,
     ],
     css: {
       preprocessorOptions: {
@@ -19,55 +18,51 @@ export default defineNuxtConfig({
           additionalData: `@use "@/assets/scss/variables.scss" as *;`
         }
       }
-    }
-  },
-  postcss: {
-    plugins: {
-      "@tailwindcss/postcss": {},
     },
   },
+
   experimental: { appManifest: false },
-  modules: ["@nuxt/content", "nuxt-icon", "@nuxt/image", "@vueuse/nuxt"],
+  modules: ["@nuxt/content", "nuxt-icon", "@nuxt/image", "@vueuse/nuxt", "@nuxtjs/tailwindcss"],
 
   runtimeConfig: {
     public: {
-        wordpressUrl: 'https://vfit-nuxt.local/graphql'
+        wordpressUrl: 'https://vfit.theuselesspage.com/graphql'
     }
   },
 
   pages: true,
 
-  app: {
-    head: {
-      title: 'Nuxt WordPress',
-      titleTemplate: '%s | Nuxt WordPress',
-    },
-  },
+  // app: {
+  //   head: {
+  //     title: 'Nuxt WordPress',
+  //     titleTemplate: '%s | Nuxt WordPress',
+  //   },
+  // },
 
-  $development: {
-    app: {
-      head: {
-        title: 'DEV',
-      },
-    }
-  },
+  // $development: {
+  //   app: {
+  //     head: {
+  //       title: 'DEV',
+  //     },
+  //   }
+  // },
 
-  $production: {
-    app: {
-      head: {
-        title: 'PROD',
-        meta: [
-          { name: 'robots', content: 'index, follow' },
-          { name: 'googlebot', content: 'index, follow' },
-          { name: 'bingbot', content: 'index, follow' }
-        ]
-      },
-    }
-  },
+  // $production: {
+  //   app: {
+  //     head: {
+  //       title: 'PROD',
+  //       meta: [
+  //         { name: 'robots', content: 'index, follow' },
+  //         { name: 'googlebot', content: 'index, follow' },
+  //         { name: 'bingbot', content: 'index, follow' }
+  //       ]
+  //     },
+  //   }
+  // },
 
   imports: {
     autoImport: true
   },
 
-  compatibilityDate: "2024-12-18",
+
 });
