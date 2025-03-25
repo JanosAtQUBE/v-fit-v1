@@ -22,7 +22,6 @@
   "dependencies": {
     "@nuxt/image": "^1.9.0",
     "@nuxtjs/tailwindcss": "^6.13.2",
-    "dompurify": "^3.2.4",
-    "html-dom-parser": "^5.0.13"
+    "dompurify": "^3.2.4"
   }
 }

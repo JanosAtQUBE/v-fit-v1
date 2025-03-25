@@ -12,9 +12,7 @@
         <hr class="my-4" />
         <article class="mt-4 space-y-2" v-html="sanitizedContent" >
         </article>
-        <img v-if="post?.PostExtraImages?.additionalImage1?.node?.sourceUrl ?? false" :src="post?.PostExtraImages?.additionalImage1?.node?.sourceUrl" alt="Additional image 1" class="mt-4" />
-        <img v-if="post?.PostExtraImages?.additionalImage2?.node?.sourceUrl ?? false" :src="post?.PostExtraImages?.additionalImage2?.node?.sourceUrl" alt="Additional image 2" class="mt-4" />
-        <img v-if="post?.PostExtraImages?.additionalImage3?.node?.sourceUrl ?? false" :src="post?.PostExtraImages?.additionalImage3?.node?.sourceUrl" alt="Additional image 3" class="mt-4" />
+        <img v-for="image in extraImages" :src="image" alt="Extra image" class="mt-4" />
       </div>
     </main>
   </div>
@@ -38,7 +36,7 @@
         sourceUrl: string;
       };
     };
-    PostExtraImages: {
+    postExtraImages: {
       additionalImage1: {
         node: {
           sourceUrl: string;
@@ -124,6 +122,15 @@
     return post.value?.content || "";
   });
 
+  const extraImages = computed(() => {
+    return [
+      post.value?.postExtraImages?.additionalImage1?.node?.sourceUrl,
+      post.value?.postExtraImages?.additionalImage2?.node?.sourceUrl,
+      post.value?.postExtraImages?.additionalImage3?.node?.sourceUrl,
+    ];
+  });
+
+  console.log(extraImages.value);
 
   useHead({
     title: post.value?.title || "Post",
